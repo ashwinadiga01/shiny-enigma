@@ -1,5 +1,10 @@
 const discord = require('discord.js');
 require('dotenv').config();
+const tts = require('./tts.json');
+const slides = require('./slides.json');
+console.log(tts.length);
+console.log(slides.length);
+
 const bot = new discord.Client({
   partials: ['MESSAGE', 'REACTION'],
 });
@@ -12,13 +17,17 @@ bot.on('message', async (message) => {
   try {
     if (message.author.bot) return;
     if (message.content == 'here') {
-      message.channel.send('lund', { tts: true });
+      let a = await message.channel.send(
+        "Lets talk about the victim of the presentation and also the main culpritm Shreya Paradkar (sorry I don't know how to pronounce indian names) who is close to 30 (which is an existential crisis itself)",
+        { tts: true }
+      );
+      setTimeout(async function () {
+        await a.delete();
+      }, 12000);
       return;
     }
 
-    let message1 = await message.channel.send(
-      'https://cdn.discordapp.com/attachments/853737763085615154/853739632427794432/insta_nimit.jpg'
-    );
+    let message1 = await message.channel.send(slides[0]);
     last = await message.channel.send('start', { tts: true });
 
     await message1.react('◀️');
@@ -35,29 +44,96 @@ let last = {
     console.log('dummy delete');
   },
 };
+
+const switcher = async (i, message) => {
+  switch (i) {
+    case 0:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 1:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 2:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 3:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 4:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 5:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 6:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 7:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 8:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 9:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 10:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+    case 11:
+      await message.edit(slides[i]);
+      last.delete();
+      last = await message.channel.send('start', { tts: true });
+      break;
+  }
+};
+
+let i = 0;
+
 bot.on('messageReactionAdd', async (reaction, user) => {
   const { name } = reaction.emoji;
   const message = reaction.message;
   try {
     if (user.bot) return;
     console.log(user.id);
+
     if (user.id == '637564801832452097' || user.id == '642898906115473428') {
       switch (name) {
         case '◀️':
-          await message.edit(
-            'https://cdn.discordapp.com/attachments/853737763085615154/853739632427794432/insta_nimit.jpg'
-          );
-          await last.delete();
-          last = await message.channel.send('back', { tts: true });
           await reaction.users.remove(user);
+          i = i - 1;
+          i = i < 0 ? 0 : i;
+          console.log(i);
+          switcher(i, message);
           break;
         case '▶️':
-          await message.edit(
-            'https://tenor.com/view/the-office-ouch-michael-scott-steve-carell-lip-bite-gif-11838665'
-          );
-          await last.delete();
-          last = await message.channel.send('forward', { tts: true });
           await reaction.users.remove(user);
+          i = i + 1;
+          i = i > 11 ? 11 : i;
+          console.log(i);
+          switcher(i, message);
           break;
       }
     }
