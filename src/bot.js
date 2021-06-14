@@ -39,22 +39,46 @@ bot.on('message', async (message) => {
     console.log(error);
   }
 });
-
-user.id = '642898906115473428';
-
-bot.on('messageReactionAdd', (reaction, user) => {
+const new1 = () => {
+  return 10;
+};
+bot.on('messageReactionAdd', async (reaction, user) => {
   const { name } = reaction.emoji;
-  const member = reaction.message.guild.members.cache.get(user.id);
+  const message = reaction.message;
   try {
-    if (reaction.message.id === channelRoles[0]) {
+    if (user.bot) return;
+    console.log(user.id);
+    if (user.id == '637564801832452097') {
       switch (name) {
         case '◀️':
-          console.log('clicked backward');
+          message.edit(
+            'https://cdn.discordapp.com/attachments/853737763085615154/853739632427794432/insta_nimit.jpg'
+          );
+          reaction.users.remove(user);
           break;
-        case '🎵':
-          console.log('clicked backward');
+        case '▶️':
+          message.edit(
+            'https://tenor.com/view/the-office-ouch-michael-scott-steve-carell-lip-bite-gif-11838665'
+          );
+          reaction.users.remove(user);
           break;
       }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+bot.on('messageReactionRemove', (reaction, user) => {
+  const { name } = reaction.emoji;
+  try {
+    switch (name) {
+      case '◀️':
+        console.log('unclicked backward');
+        break;
+      case '▶️':
+        console.log('unclicked forward');
+        break;
     }
   } catch (error) {
     console.log(error);
