@@ -17,18 +17,19 @@ bot.on('message', async (message) => {
   try {
     if (message.author.bot) return;
     if (message.content == 'here') {
-      let a = await message.channel.send(
+      let one = await message.channel.send(
         "Lets talk about the victim of the presentation and also the main culpritm Shreya Paradkar (sorry I don't know how to pronounce indian names) who is close to 30 (which is an existential crisis itself)",
         { tts: true }
       );
-      setTimeout(async function () {
-        await a.delete();
-      }, 12000);
+      one = {
+        ...new1,
+      };
+      console.log(one);
       return;
     }
 
     let message1 = await message.channel.send(slides[0]);
-    last = await message.channel.send('start', { tts: true });
+    last = await message.channel.send(tts[0], { tts: true });
 
     await message1.react('◀️');
     await message1.react('▶️');
@@ -36,77 +37,126 @@ bot.on('message', async (message) => {
     console.log(error);
   }
 });
-const new1 = () => {
-  return 10;
+let new1 = {
+  delete: () => {
+    console.log('dummy delete');
+  },
 };
 let last = {
   delete: () => {
     console.log('dummy delete');
   },
 };
+let one = {
+  delete: () => {
+    console.log('dummy delete');
+  },
+};
+let two = {
+  delete: () => {
+    console.log('dummy delete');
+  },
+};
 
 const switcher = async (i, message) => {
-  switch (i) {
-    case 0:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 1:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 2:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 3:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 4:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 5:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 6:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 7:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 8:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 9:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 10:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
-    case 11:
-      await message.edit(slides[i]);
-      last.delete();
-      last = await message.channel.send('start', { tts: true });
-      break;
+  try {
+    switch (i) {
+      case 0:
+        await message.edit(slides[i]);
+        await one.delete();
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 1:
+        await message.edit(slides[i]);
+        await last.delete();
+        one = await message.channel.send(tts[i][0], { tts: true });
+        last = await message.channel.send(tts[i][1], { tts: true });
+        break;
+      case 2:
+        await message.edit(slides[i]);
+        await one.delete();
+        one = {
+          ...new1,
+        };
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 3:
+        await message.edit(slides[i]);
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 4:
+        await message.edit(slides[i]);
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 5:
+        await message.edit(slides[i]);
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 6:
+        await message.edit(slides[i]);
+        await one.delete();
+        await two.delete();
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 7:
+        await message.edit(slides[i]);
+        last.delete();
+        one = await message.channel.send(tts[i][0], { tts: true });
+        two = await message.channel.send(tts[i][1], { tts: true });
+        last = await message.channel.send(tts[i][2], { tts: true });
+        break;
+      case 8:
+        await message.edit(slides[i]);
+        await one.delete();
+        one = {
+          ...new1,
+        };
+        await two.delete();
+        two = {
+          ...new1,
+        };
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 9:
+        await message.edit(slides[i]);
+        last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 10:
+        await message.edit(slides[i]);
+        await one.delete();
+        one = {
+          ...new1,
+        };
+        await two.delete();
+        two = {
+          ...new1,
+        };
+        await last.delete();
+        last = await message.channel.send(tts[i], { tts: true });
+        break;
+      case 11:
+        await message.edit(slides[i]);
+        last.delete();
+        one = await message.channel.send(tts[i][0], { tts: true });
+        two = await message.channel.send(tts[i][1], { tts: true });
+        last = await message.channel.send(tts[i][2], { tts: true });
+        setTimeout(async () => {
+          await one.delete();
+          await two.delete();
+          await last.delete();
+        }, 35000);
+        break;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
