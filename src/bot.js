@@ -148,6 +148,7 @@ const switcher = async (i, message) => {
         one = await message.channel.send(tts[i][0], { tts: true });
         two = await message.channel.send(tts[i][1], { tts: true });
         last = await message.channel.send(tts[i][2], { tts: true });
+        message.react('🦋');
         setTimeout(async () => {
           await one.delete();
           await two.delete();
@@ -185,6 +186,11 @@ bot.on('messageReactionAdd', async (reaction, user) => {
           console.log(i);
           switcher(i, message);
           break;
+        case '🦋': {
+          reaction.message.channel.send(
+            'https://ashwinadiga01.github.io/shiny-enigma/'
+          );
+        }
       }
     }
   } catch (error) {
